@@ -22,17 +22,17 @@ public class ActorBeta extends Actor {
 
     public void setTexture(Texture texture) {
         textureRegion.setRegion(texture);
-        this.setSize(texture.getWidth(), texture.getHeight());
+        setSize(texture.getWidth(), texture.getHeight());
         rectangle.setSize(texture.getWidth(), texture.getHeight());
     }
 
     public Rectangle getRectangle() {
-        rectangle.setPosition(this.getX(), this.getY());
+        rectangle.setPosition(getX(), getY());
         return rectangle;
     }
 
     public boolean overlaps(ActorBeta other) {
-        return this.getRectangle().overlaps(other.getRectangle());
+        return getRectangle().overlaps(other.getRectangle());
     }
 
     public void act(float deltaTime) {

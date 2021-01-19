@@ -43,6 +43,7 @@ public class StarfishCollectorBeta extends Game {
     }
 
     public void render() {
+
         // check user input
         mainStage.act(1 / 60f);
 

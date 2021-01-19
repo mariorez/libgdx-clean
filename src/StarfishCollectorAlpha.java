@@ -26,6 +26,7 @@ public class StarfishCollectorAlpha extends Game {
     private boolean win;
 
     public void create() {
+
         batch = new SpriteBatch();
 
         turtleTexture = new Texture(Gdx.files.internal("assets/turtle-1.png"));
@@ -45,13 +46,17 @@ public class StarfishCollectorAlpha extends Game {
     }
 
     public void render() {
+
         // check user input
         if (Gdx.input.isKeyPressed(Keys.LEFT))
             turtleX--;
+
         if (Gdx.input.isKeyPressed(Keys.RIGHT))
             turtleX++;
+
         if (Gdx.input.isKeyPressed(Keys.UP))
             turtleY++;
+
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             turtleY--;
 
@@ -59,8 +64,9 @@ public class StarfishCollectorAlpha extends Game {
         turtleRectangle.setPosition(turtleX, turtleY);
 
         // check win condition: turtle must be overlapping starfish
-        if (turtleRectangle.overlaps(starfishRectangle))
+        if (turtleRectangle.overlaps(starfishRectangle)) {
             win = true;
+        }
 
         // clear screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -70,14 +76,13 @@ public class StarfishCollectorAlpha extends Game {
         batch.begin();
         batch.draw(oceanTexture, 0, 0);
 
-        if (!win)
+        if (win) {
+            batch.draw(winMessageTexture, 180, 180);
+        } else {
             batch.draw(starfishTexture, starfishX, starfishY);
+        }
 
         batch.draw(turtleTexture, turtleX, turtleY);
-
-        if (win)
-            batch.draw(winMessageTexture, 180, 180);
-
         batch.end();
     }
 }
